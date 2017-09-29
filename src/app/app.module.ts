@@ -8,9 +8,9 @@ import { STriangleComponent } from './s-triangle/s-triangle.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DotComponent,
+    DotComponent,
     STriangleComponent
-],
+  ],
   imports: [
     BrowserModule
   ],
