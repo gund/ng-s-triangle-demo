@@ -25,16 +25,16 @@ export class STriangleComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (STriangleComponent.slowDown) {
+    if ('s' in changes) {
+      this.halfS = this.s / 2;
+      this.half2S = this.halfS / 2;
+    }
+
+    if (STriangleComponent.slowDown && !this.isFinal) {
       const e = performance.now() + 0.8;
       while (performance.now() < e) {
         // Artificially long execution time.
       }
-    }
-
-    if ('s' in changes) {
-      this.halfS = this.s / 2;
-      this.half2S = this.halfS / 2;
     }
   }
 
