@@ -79,13 +79,16 @@ module.exports = {
   },
   "entry": {
     "main": [
-      "./src\\main.ts"
+      "./src\\main.worker.ts"
     ],
     "polyfills": [
       "./src\\polyfills.ts"
     ],
     "styles": [
       "./src\\styles.css"
+    ],
+    "worker": [
+      "./src/worker.ts"
     ]
   },
   "output": {
@@ -389,7 +392,9 @@ module.exports = {
       "cache": true,
       "showErrors": true,
       "chunks": "all",
-      "excludeChunks": [],
+      "excludeChunks": [
+        'worker'
+      ],
       "title": "Webpack App",
       "xhtml": true,
       "chunksSortMode": function sort(left, right) {
@@ -411,7 +416,12 @@ module.exports = {
       "name": [
         "inline"
       ],
-      "minChunks": null
+      "minChunks": null,
+      "chunks": [
+        "main",
+        "polyfills",
+        "styles"
+      ]
     }),
     new CommonsChunkPlugin({
       "name": [
@@ -442,10 +452,11 @@ module.exports = {
     }),
     new NamedModulesPlugin({}),
     new AotPlugin({
-      "mainPath": "main.ts",
+      "mainPath": "main.worker.ts",
+      "entryModule": "app/app.worker.module#AppModule",
       "replaceExport": false,
       "hostReplacementPaths": {
-        "environments\\environment.ts": "environments\\environment.ts"
+        "environments\\environment.ts": "environments\\environment.prod.ts"
       },
       "exclude": [],
       "tsConfigPath": "src\\tsconfig.app.json",
