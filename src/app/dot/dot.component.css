@@ -1,0 +1,7 @@
+div {
+  position: absolute;
+  background: #61dafb;
+  font: normal 15px sans-serif;
+  text-align: center;
+  cursor: pointer;
+}

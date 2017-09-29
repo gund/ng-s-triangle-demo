@@ -1,3 +1,3 @@
-<p>
-  dot works!
-</p>
+<div [ngStyle]="style" [style.background-color]="bgColor" (mouseenter)="enter()" (mouseleave)="leave()">
+  {{hover ? '*' + text + '*' : text}}
+</div>
