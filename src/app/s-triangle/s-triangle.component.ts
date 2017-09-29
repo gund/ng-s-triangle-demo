@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-s-triangle',
@@ -6,7 +6,9 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleCha
   styleUrls: ['./s-triangle.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class STriangleComponent implements OnInit, OnChanges {
+export class STriangleComponent implements OnChanges {
+
+  static slowDown = true;
 
   @Input() x: number;
   @Input() y: number;
@@ -22,18 +24,14 @@ export class STriangleComponent implements OnInit, OnChanges {
     return this.s <= this.targetSize;
   }
 
-  ngOnInit() {
-    const newSize = this.s / 2;
-    const slowDown = false;
-    if (slowDown) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (STriangleComponent.slowDown) {
       const e = performance.now() + 0.8;
       while (performance.now() < e) {
         // Artificially long execution time.
       }
     }
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
     if ('s' in changes) {
       this.halfS = this.s / 2;
       this.half2S = this.halfS / 2;
