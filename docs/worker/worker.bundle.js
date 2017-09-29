@@ -64280,15 +64280,15 @@ var STriangleComponent = STriangleComponent_1 = (function () {
         configurable: true
     });
     STriangleComponent.prototype.ngOnChanges = function (changes) {
-        if (STriangleComponent_1.slowDown) {
+        if ('s' in changes) {
+            this.halfS = this.s / 2;
+            this.half2S = this.halfS / 2;
+        }
+        if (STriangleComponent_1.slowDown && !this.isFinal) {
             var e = performance.now() + 0.8;
             while (performance.now() < e) {
                 // Artificially long execution time.
             }
-        }
-        if ('s' in changes) {
-            this.halfS = this.s / 2;
-            this.half2S = this.halfS / 2;
         }
     };
     return STriangleComponent;
