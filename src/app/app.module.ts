@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DotComponent } from './dot/dot.component';
+import { STriangleComponent } from './s-triangle/s-triangle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DotComponent
+    DotComponent,
+    STriangleComponent
 ],
   imports: [
     BrowserModule
