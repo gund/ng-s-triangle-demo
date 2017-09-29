@@ -15,9 +15,9 @@
     "build:ex": "npm-run-all -p build:ex:*",
     "postbuild:ex": "npm run cleanup:ex && npm run build:update-base",
     "build:ex:single": "ng build --prod --output-path dist2",
-    "postbuild:ex:single": "rimraf example/single && ncp dist2 example/single",
+    "postbuild:ex:single": "rimraf docs/single && ncp dist2 docs/single",
     "build:ex:worker": "npm run build",
-    "postbuild:ex:worker": "rimraf example/worker && ncp dist example/worker",
+    "postbuild:ex:worker": "rimraf docs/worker && ncp dist docs/worker",
     "build:update-base": "node scripts/update-ex.js"
   },
   "private": true,
